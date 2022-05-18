@@ -1,0 +1,62 @@
+﻿@model Bakiye_Kontrol.Models.Entity.Banka
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+
+<div>
+    <h4 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-size:x-large ;color:brown">Banka</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Banka Kodu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BankaKodu)
+        </dd>
+
+        <dt>
+            Banka Adı
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BankaAdi)
+        </dd>
+
+        <dt>
+            Şube Adı
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubeAdi)
+        </dd>
+
+        <dt>
+            Hesap Numarası
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HesapNo)
+        </dd>
+
+        <dt>
+            IBAN
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Iban)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+<div class="form-actions no-color">
+    <input type="submit" value="Sil" class="btn btn-info" />
+    @Html.ActionLink("VAZGEÇ", "Index", null, new { id = "OT", @class = "btn btn-danger" })
+</div>
+    }
+</div>

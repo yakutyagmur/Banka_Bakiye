@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9738285fefcf4d98a61ca8a362b8f33a" Name="Diagram1">
+        <EntityTypeShape EntityType="BakiyeModel.Bakiye_Banka" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BakiyeModel.Bakiye_Kasa" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BakiyeModel.Banka" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="BakiyeModel.Kasa" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="BakiyeModel.TAHSILAT_ODEME" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BakiyeModel.Yeni_Hareket_Islem" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="BakiyeModel.FK_Bakiye_Banka_Bakiye_Banka" ManuallyRouted="false" />
+        <AssociationConnector Association="BakiyeModel.FK_Bakiye_Kasa_Kasa" ManuallyRouted="false" />
+        <AssociationConnector Association="BakiyeModel.FK_TAHSILAT_ODEME_Banka" />
+        <AssociationConnector Association="BakiyeModel.FK_TAHSILAT_ODEME_Kasa" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

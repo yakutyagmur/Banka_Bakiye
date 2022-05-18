@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BakiyeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Bakiye_Banka">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BankaID" Type="Int32" />
+    <Property Name="ParaBirimi" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Bakiye" Type="Int32" />
+    <NavigationProperty Name="Banka" Relationship="Self.FK_Bakiye_Banka_Bakiye_Banka" FromRole="Bakiye_Banka" ToRole="Banka" />
+  </EntityType>
+  <EntityType Name="Bakiye_Kasa">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KasaID" Type="Int32" />
+    <Property Name="ParaBirimi" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Bakiye" Type="Int32" />
+    <NavigationProperty Name="Kasa" Relationship="Self.FK_Bakiye_Kasa_Kasa" FromRole="Bakiye_Kasa" ToRole="Kasa" />
+  </EntityType>
+  <EntityType Name="Banka">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BankaKodu" Type="Int32" />
+    <Property Name="BankaAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SubeAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="HesapNo" Type="Int32" />
+    <Property Name="Iban" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Bakiye_Banka" Relationship="Self.FK_Bakiye_Banka_Bakiye_Banka" FromRole="Banka" ToRole="Bakiye_Banka" />
+    <NavigationProperty Name="TAHSILAT_ODEME" Relationship="BakiyeModel.FK_TAHSILAT_ODEME_Banka" FromRole="Banka" ToRole="TAHSILAT_ODEME" />
+  </EntityType>
+  <EntityType Name="Kasa">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KasaKodu" Type="Int32" />
+    <Property Name="KasaAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Bakiye_Kasa" Relationship="Self.FK_Bakiye_Kasa_Kasa" FromRole="Kasa" ToRole="Bakiye_Kasa" />
+    <NavigationProperty Name="TAHSILAT_ODEME" Relationship="BakiyeModel.FK_TAHSILAT_ODEME_Kasa" FromRole="Kasa" ToRole="TAHSILAT_ODEME" />
+  </EntityType>
+  <EntityType Name="TAHSILAT_ODEME">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IslemTipi" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="IslemNo" Type="Int32" />
+    <Property Name="IslemTarih" Type="DateTime" Precision="3" />
+    <Property Name="KasaID" Type="Int32" />
+    <Property Name="BankaID" Type="Int32" />
+    <Property Name="Aciklama" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ParaBirimi" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Tutar" Type="Int32" />
+    <NavigationProperty Name="Banka" Relationship="BakiyeModel.FK_TAHSILAT_ODEME_Banka" FromRole="TAHSILAT_ODEME" ToRole="Banka" />
+    <NavigationProperty Name="Kasa" Relationship="BakiyeModel.FK_TAHSILAT_ODEME_Kasa" FromRole="TAHSILAT_ODEME" ToRole="Kasa" />
+  </EntityType>
+  <EntityType Name="Yeni_Hareket_Islem">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="IslemTipi" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="IslemNo" Type="Int32" />
+    <Property Name="Aciklama" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ParaBirimi" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="Tutar" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="OdemeAlan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_Bakiye_Banka_Bakiye_Banka">
+    <End Role="Banka" Type="Self.Banka" Multiplicity="0..1" />
+    <End Role="Bakiye_Banka" Type="Self.Bakiye_Banka" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Banka">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Bakiye_Banka">
+        <PropertyRef Name="BankaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bakiye_Kasa_Kasa">
+    <End Role="Kasa" Type="Self.Kasa" Multiplicity="0..1" />
+    <End Role="Bakiye_Kasa" Type="Self.Bakiye_Kasa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kasa">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Bakiye_Kasa">
+        <PropertyRef Name="KasaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BakiyeEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Bakiye_Banka" EntityType="Self.Bakiye_Banka" />
+    <EntitySet Name="Bakiye_Kasa" EntityType="Self.Bakiye_Kasa" />
+    <EntitySet Name="Banka" EntityType="Self.Banka" />
+    <EntitySet Name="Kasa" EntityType="Self.Kasa" />
+    <EntitySet Name="TAHSILAT_ODEME" EntityType="Self.TAHSILAT_ODEME" />
+    <EntitySet Name="Yeni_Hareket_Islem" EntityType="Self.Yeni_Hareket_Islem" />
+    <AssociationSet Name="FK_Bakiye_Banka_Bakiye_Banka" Association="Self.FK_Bakiye_Banka_Bakiye_Banka">
+      <End Role="Banka" EntitySet="Banka" />
+      <End Role="Bakiye_Banka" EntitySet="Bakiye_Banka" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bakiye_Kasa_Kasa" Association="Self.FK_Bakiye_Kasa_Kasa">
+      <End Role="Kasa" EntitySet="Kasa" />
+      <End Role="Bakiye_Kasa" EntitySet="Bakiye_Kasa" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TAHSILAT_ODEME_Banka" Association="BakiyeModel.FK_TAHSILAT_ODEME_Banka">
+      <End Role="Banka" EntitySet="Banka" />
+      <End Role="TAHSILAT_ODEME" EntitySet="TAHSILAT_ODEME" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TAHSILAT_ODEME_Kasa" Association="BakiyeModel.FK_TAHSILAT_ODEME_Kasa">
+      <End Role="Kasa" EntitySet="Kasa" />
+      <End Role="TAHSILAT_ODEME" EntitySet="TAHSILAT_ODEME" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association Name="FK_TAHSILAT_ODEME_Banka">
+    <End Type="BakiyeModel.Banka" Role="Banka" Multiplicity="0..1" />
+    <End Type="BakiyeModel.TAHSILAT_ODEME" Role="TAHSILAT_ODEME" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Banka">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TAHSILAT_ODEME">
+        <PropertyRef Name="BankaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TAHSILAT_ODEME_Kasa">
+    <End Type="BakiyeModel.Kasa" Role="Kasa" Multiplicity="0..1" />
+    <End Type="BakiyeModel.TAHSILAT_ODEME" Role="TAHSILAT_ODEME" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kasa">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TAHSILAT_ODEME">
+        <PropertyRef Name="KasaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,45 @@
+﻿@model Bakiye_Kontrol.Models.Entity.Bakiye_Banka
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div>
+    <h4 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-size:x-large ;color:brown">Banka Bakiye</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Para Birimi
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ParaBirimi)
+        </dd>
+
+        <dt>
+            Bakiye
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bakiye)
+        </dd>
+
+        <dt>
+            Banka Adı
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Banka.BankaAdi)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="btn btn-info" /> 
+            @Html.ActionLink("VAZGEÇ", "Index",null,new { id="OT",@class="btn btn-danger"})
+        </div>
+    }
+</div>

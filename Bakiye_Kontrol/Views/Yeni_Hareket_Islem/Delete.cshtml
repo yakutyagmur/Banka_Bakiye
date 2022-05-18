@@ -1,0 +1,70 @@
+﻿@model Bakiye_Kontrol.Models.Entity.Yeni_Hareket_Islem
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+
+<div>
+    <h4 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-size:x-large ;color:brown">Yeni Hareket İşlemim</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            İşlem Tipi
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IslemTipi)
+        </dd>
+
+        <dt>
+            İşlem Numarası
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IslemNo)
+        </dd>
+
+        <dt>
+            Açıklama
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Aciklama)
+        </dd>
+
+        <dt>
+            Para Birimi
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ParaBirimi)
+        </dd>
+
+        <dt>
+            Tutar
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tutar)
+        </dd>
+
+        <dt>
+            Banka/Kasa
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OdemeAlan)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+<div class="form-actions no-color">
+    <input type="submit" value="Sil" class="btn btn-info" />
+    @Html.ActionLink("VAZGEÇ", "Index", null, new { id = "OT", @class = "btn btn-danger" })
+</div>
+    }
+</div>

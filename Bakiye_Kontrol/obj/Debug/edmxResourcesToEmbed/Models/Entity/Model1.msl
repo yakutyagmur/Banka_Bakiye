@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BakiyeModelStoreContainer" CdmEntityContainer="BakiyeEntities">
+    <EntitySetMapping Name="Bakiye_Banka">
+      <EntityTypeMapping TypeName="BakiyeModel.Bakiye_Banka">
+        <MappingFragment StoreEntitySet="Bakiye_Banka">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="BankaID" ColumnName="BankaID" />
+          <ScalarProperty Name="ParaBirimi" ColumnName="ParaBirimi" />
+          <ScalarProperty Name="Bakiye" ColumnName="Bakiye" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bakiye_Kasa">
+      <EntityTypeMapping TypeName="BakiyeModel.Bakiye_Kasa">
+        <MappingFragment StoreEntitySet="Bakiye_Kasa">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="KasaID" ColumnName="KasaID" />
+          <ScalarProperty Name="ParaBirimi" ColumnName="ParaBirimi" />
+          <ScalarProperty Name="Bakiye" ColumnName="Bakiye" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Banka">
+      <EntityTypeMapping TypeName="BakiyeModel.Banka">
+        <MappingFragment StoreEntitySet="Banka">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="BankaKodu" ColumnName="BankaKodu" />
+          <ScalarProperty Name="BankaAdi" ColumnName="BankaAdi" />
+          <ScalarProperty Name="SubeAdi" ColumnName="SubeAdi" />
+          <ScalarProperty Name="HesapNo" ColumnName="HesapNo" />
+          <ScalarProperty Name="Iban" ColumnName="Iban" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kasa">
+      <EntityTypeMapping TypeName="BakiyeModel.Kasa">
+        <MappingFragment StoreEntitySet="Kasa">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="KasaKodu" ColumnName="KasaKodu" />
+          <ScalarProperty Name="KasaAdi" ColumnName="KasaAdi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAHSILAT_ODEME">
+      <EntityTypeMapping TypeName="BakiyeModel.TAHSILAT_ODEME">
+        <MappingFragment StoreEntitySet="TAHSILAT_ODEME">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IslemTipi" ColumnName="IslemTipi" />
+          <ScalarProperty Name="IslemNo" ColumnName="IslemNo" />
+          <ScalarProperty Name="IslemTarih" ColumnName="IslemTarih" />
+          <ScalarProperty Name="KasaID" ColumnName="KasaID" />
+          <ScalarProperty Name="BankaID" ColumnName="BankaID" />
+          <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+          <ScalarProperty Name="ParaBirimi" ColumnName="ParaBirimi" />
+          <ScalarProperty Name="Tutar" ColumnName="Tutar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Yeni_Hareket_Islem">
+      <EntityTypeMapping TypeName="BakiyeModel.Yeni_Hareket_Islem">
+        <MappingFragment StoreEntitySet="Yeni_Hareket_Islem">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="IslemTipi" ColumnName="IslemTipi" />
+          <ScalarProperty Name="IslemNo" ColumnName="IslemNo" />
+          <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+          <ScalarProperty Name="ParaBirimi" ColumnName="ParaBirimi" />
+          <ScalarProperty Name="Tutar" ColumnName="Tutar" />
+          <ScalarProperty Name="OdemeAlan" ColumnName="OdemeAlan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

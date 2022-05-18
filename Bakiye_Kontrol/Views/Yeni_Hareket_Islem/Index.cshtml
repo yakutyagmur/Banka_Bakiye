@@ -1,0 +1,86 @@
+﻿@model IEnumerable<Bakiye_Kontrol.Models.Entity.Yeni_Hareket_Islem>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div style="background-color:azure" class="container">
+<h2 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #3c3b8b">Yeni Hareket Yönetimi</h2>
+
+<table  style="background-color:khaki;border-radius:4.2vh" class="table table-hover" class="table">
+    <thead>
+        <tr>
+            <th>
+                İşlem Tipi
+            </th>
+            <th>
+                İşlem Numarası
+            </th>
+            <th>
+                Açıklama
+            </th>
+            <th>
+                Para Birimi
+            </th>
+            <th>
+                Tutar
+            </th>
+            <th>
+                Kasa/Banka
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @{
+                        string tip = "";
+                        if (item.IslemTipi == "T")
+                        {
+                            tip = "Nakit Tahsilat";
+                        }
+                        else if (item.IslemTipi == "G")
+                        {
+                            tip = "Gelen Havale";
+                        }
+                        else if (item.IslemTipi == "H")
+                        {
+                            tip = "Giden Havale";
+                        }
+                        else
+                        {
+                            tip = "Nakit Ödeme";
+                        }
+                    }
+                    @tip
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IslemNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Aciklama)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ParaBirimi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tutar)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OdemeAlan)
+                </td>
+                <td>
+                    @Html.ActionLink("Güncelle", "Edit", new { id = item.ID }, new { @class = "btn btn-warning" })
+                    @Html.ActionLink("Sil", "Delete", new { id = item.ID }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+    </tbody>
+    <p>
+        @Html.ActionLink("Ekle", "Create", null, new { id = "OT", style = "color:white", @class = "btn btn-success" })
+    </p>
+</table>
+</div>
